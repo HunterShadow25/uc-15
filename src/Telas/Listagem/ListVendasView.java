@@ -8,8 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
+
+/**
+ * tela de listagem de vendas
+ *
+ * @javadoc
+ */
 public class ListVendasView extends javax.swing.JFrame {
 
     public ListVendasView() {
@@ -43,7 +48,7 @@ public class ListVendasView extends javax.swing.JFrame {
                 tabelaVendas.addRow(obj);
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+           //System.out.println(e.getMessage());
         }
 
     }
@@ -288,11 +293,12 @@ public class ListVendasView extends javax.swing.JFrame {
     private void jbnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnExcluirActionPerformed
         try {
             VendasDAO ld = new VendasDAO();
-            Object obj = tblVendas.getValueAt(tblVendas.getSelectedRow(), 0);
+            //salvando o valor da linha selecionada em uma variavel
+            Object obj = tblVendas.getValueAt(tblVendas.getSelectedRow(), 0); 
 
-            int num = (int) obj;
+            int num = (int) obj;//transformando a variavel em um int
 
-            ld.excluir(num);
+            ld.excluir(num);//excluindo a linha no BD
             preencherTabela();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERRO selecione uma linha para excluir", "AVISO", 2);
@@ -310,6 +316,7 @@ public class ListVendasView extends javax.swing.JFrame {
              SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Vendas venda = new Vendas();
             VendasDAO vd = new VendasDAO();
+            //pegando o valor de cada coluna da linha selecionada
             venda.setId(Integer.parseInt(tblVendas.getValueAt(tblVendas.getSelectedRow(), 0).toString()));
             venda.setDescricao(tblVendas.getValueAt(tblVendas.getSelectedRow(), 1).toString());
             venda.setQuantidade(Integer.parseInt(tblVendas.getValueAt(tblVendas.getSelectedRow(), 2).toString()));

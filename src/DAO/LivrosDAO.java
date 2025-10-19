@@ -1,5 +1,10 @@
 package DAO;
 
+/**
+ * classe responsavel por administrar o CRUD com os dados dos livros
+ *
+ * @javadoc
+ */
 import Beans.Livros;
 import Conexao.Conexao;
 import java.sql.Connection;
@@ -35,22 +40,24 @@ public class LivrosDAO {
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "erro ao inserir os dados");
+        } finally {
+            conexao.desconectar();
         }
     }
 
-    public List<Livros> getLivros(String pesquisa, double preço1, double preço2) {
+    public List<Livros> getLivros(String pesquisa, double minimo, double maximo) {
         String sql = "Select * from livros where nome LIKE ? AND preço between ? AND ? or genero LIKE ? AND preço between ? AND ? or autor LIKE ? AND preço between ? AND ?";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             stmt.setString(1, "%" + pesquisa + "%");
-            stmt.setDouble(2, preço1);
-            stmt.setDouble(3, preço2);
+            stmt.setDouble(2, minimo);
+            stmt.setDouble(3, maximo);
             stmt.setString(4, "%" + pesquisa + "%");
-            stmt.setDouble(5, preço1);
-            stmt.setDouble(6, preço2);
+            stmt.setDouble(5, minimo);
+            stmt.setDouble(6, maximo);
             stmt.setString(7, "%" + pesquisa + "%");
-            stmt.setDouble(8, preço1);
-            stmt.setDouble(9, preço2);
+            stmt.setDouble(8, minimo);
+            stmt.setDouble(9, maximo);
 
             ResultSet rs = stmt.executeQuery();
             List<Livros> lista = new ArrayList();
@@ -67,8 +74,10 @@ public class LivrosDAO {
             }
             return lista;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
             return null;
+        } finally {
+            conexao.desconectar();
         }
 
     }
@@ -84,7 +93,7 @@ public class LivrosDAO {
             stmt.execute();
 
         } catch (SQLException e) {
-
+            JOptionPane.showMessageDialog(null, "erro ao excluir verifique a conexao");
         }
     }
 
@@ -103,6 +112,8 @@ public class LivrosDAO {
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            conexao.desconectar();
         }
 
     }
@@ -111,7 +122,7 @@ public class LivrosDAO {
         String sql = "Select * from livros where nome = (?)";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setString(1, pesquisa );
+            stmt.setString(1, pesquisa);
 
             ResultSet rs = stmt.executeQuery();
             List<Livros> lista = new ArrayList();
@@ -125,8 +136,10 @@ public class LivrosDAO {
             }
             return lista;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
             return null;
+        } finally {
+            conexao.desconectar();
         }
 
     }

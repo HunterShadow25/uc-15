@@ -1,11 +1,17 @@
-
 package Beans;
 
+/**
+ * classe para administrar e guardar as informacoes dos usuarios
+ *
+ * @javadoc
+ */
 
 public class Usuarios {
 
     private int id;
-    private String nivel, nome, senha;
+    private String nivel;
+    private String nome;
+    private String senha;
 
     public int getId() {
         return id;

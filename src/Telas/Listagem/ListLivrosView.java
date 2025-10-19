@@ -9,11 +9,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+/**
+ * tela de listagem de livros
+ *
+ * @javadoc
+ */
 public class ListLivrosView extends javax.swing.JFrame {
 
     public ListLivrosView() {
         initComponents();
-          lblNivel.setText(UsuariosDTO.getUsuarios());
+        lblNivel.setText(UsuariosDTO.getUsuarios());
     }
 
     public void preencherTabela() {
@@ -24,18 +29,20 @@ public class ListLivrosView extends javax.swing.JFrame {
             double preco2 = 9999.0;
 
             String pesquisa = txtPesquisa.getText();
+            //verificando se os campos para delimitar o valor estão vazios
             if (!txtPreco1.getText().isEmpty()) {
                 preco1 = Double.parseDouble(txtPreco1.getText());
             }
             if (!txtPreco2.getText().isEmpty()) {
                 preco2 = Double.parseDouble(txtPreco2.getText());
             }
+            //adicionando os itens a uma lista 
             List<Livros> lista = ld.getLivros(pesquisa, preco1, preco2);
 
             DefaultTableModel tabelaLivros = (DefaultTableModel) tblLivros.getModel();
             tabelaLivros.setNumRows(0);
             tblLivros.setRowSorter(new TableRowSorter(tabelaLivros));
-
+            //transformando os dados em obejtos e adicionando eles as linhas
             for (Livros li : lista) {
 
                 Object[] obj = new Object[]{
@@ -49,7 +56,7 @@ public class ListLivrosView extends javax.swing.JFrame {
                 tabelaLivros.addRow(obj);
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+           // System.out.println(e.getMessage());
         }
 
     }
@@ -323,7 +330,7 @@ public class ListLivrosView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbnVoltarActionPerformed
 
     private void txtPesquisaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPesquisaCaretUpdate
-
+        //prenchendo a tabela assim que a barra de pesquisa atualizar
         preencherTabela();
 
 
@@ -340,11 +347,11 @@ public class ListLivrosView extends javax.swing.JFrame {
     private void jbnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnExcluirActionPerformed
         try {
             LivrosDAO ld = new LivrosDAO();
-            Object obj = tblLivros.getValueAt(tblLivros.getSelectedRow(), 0);
+            Object obj = tblLivros.getValueAt(tblLivros.getSelectedRow(), 0);//pegando o numero da linha selecionada
 
             int num = (int) obj;
 
-            ld.excluir(num);
+            ld.excluir(num);//excluindo com base na linha selecionada
             preencherTabela();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERRO selecione uma linha para excluir", "AVISO", 2);
@@ -356,6 +363,7 @@ public class ListLivrosView extends javax.swing.JFrame {
         Livros li = new Livros();
         LivrosDAO ld = new LivrosDAO();
         try {
+            //pegando o valor de cada coluna da linha selecionada e atualizando no banco de dados
             li.setNome(tblLivros.getValueAt(tblLivros.getSelectedRow(), 1).toString());
             li.setAutor(tblLivros.getValueAt(tblLivros.getSelectedRow(), 2).toString());
             li.setGenero(tblLivros.getValueAt(tblLivros.getSelectedRow(), 3).toString());
@@ -373,11 +381,11 @@ public class ListLivrosView extends javax.swing.JFrame {
             int id = (int) (tblLivros.getValueAt(tblLivros.getSelectedRow(), 0));
             li.setId(id);
             ld.editar(li);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "confirme se todos dados inseridos são validos", "AVISO", 2);
         }
-        
+
     }//GEN-LAST:event_jbnEditarActionPerformed
 
     public static void main(String args[]) {

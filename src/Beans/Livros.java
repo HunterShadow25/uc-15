@@ -1,10 +1,18 @@
 package Beans;
 
+/**
+ * classe para administrar e guardar as informacoes dos livros
+ *
+ * @javadoc
+ */
 public class Livros {
 
     private int id;
 
-    private String nome, genero, autor, descricao;
+    private String nome;
+    private String genero;
+    private String autor;
+    private String descricao;
     private double preco;
 
     public int getId() {

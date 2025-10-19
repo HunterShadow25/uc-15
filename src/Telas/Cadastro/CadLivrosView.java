@@ -7,11 +7,16 @@ import Telas.Listagem.ListLivrosView;
 import Telas.MenuView;
 import javax.swing.JOptionPane;
 
+/**
+ * tela de cadastro de livros
+ *
+ * @javadoc
+ */
 public class CadLivrosView extends javax.swing.JFrame {
 
     public CadLivrosView() {
         initComponents();
-          lblNivel.setText(UsuariosDTO.getUsuarios());
+        lblNivel.setText(UsuariosDTO.getUsuarios());
     }
 
     @SuppressWarnings("unchecked")
@@ -270,13 +275,14 @@ public class CadLivrosView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JbnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbnVoltarActionPerformed
+        //troca de tela
         MenuView mv = new MenuView();
         mv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JbnVoltarActionPerformed
 
     private void jbnListagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnListagemActionPerformed
-
+        //troca de tela
         ListLivrosView lv = new ListLivrosView();
         lv.setVisible(true);
         this.dispose();
@@ -289,20 +295,20 @@ public class CadLivrosView extends javax.swing.JFrame {
 
     private void jbnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSalvarActionPerformed
 
-        try{
-        Livros li = new Livros();
-        LivrosDAO ld = new LivrosDAO();
-        
-        li.setNome(txtNome.getText());
-        li.setGenero(txtGenero.getText());
-        li.setAutor(txtAutor.getText());
-        li.setDescricao(txtDescriçao.getText());
-        li.setPreco(Double.parseDouble(txtPreço.getText()));
-        
-        ld.inserir(li);
-        limpar();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "preencha todos os campos corretamente antes de proseguir","AVISO", 2);
+        try {
+            Livros li = new Livros();
+            LivrosDAO ld = new LivrosDAO();
+
+            li.setNome(txtNome.getText());
+            li.setGenero(txtGenero.getText());
+            li.setAutor(txtAutor.getText());
+            li.setDescricao(txtDescriçao.getText());
+            li.setPreco(Double.parseDouble(txtPreço.getText()));
+
+            ld.inserir(li);
+            limpar();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "preencha todos os campos corretamente antes de proseguir", "AVISO", 2);
         }
     }//GEN-LAST:event_jbnSalvarActionPerformed
 

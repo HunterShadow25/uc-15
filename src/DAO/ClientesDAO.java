@@ -1,5 +1,10 @@
 package DAO;
 
+/**
+ * classe responsavel por administrar o CRUD com os dados dos clientes
+ *
+ * @javadoc
+ */
 import Beans.Clientes;
 import Conexao.Conexao;
 import java.sql.Connection;
@@ -33,6 +38,8 @@ public class ClientesDAO {
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage() + "  erro ao inserir os dados");
+        } finally {
+            conexao.desconectar();
         }
     }
 
@@ -58,6 +65,8 @@ public class ClientesDAO {
             return lista;
         } catch (SQLException e) {
             return null;
+        } finally {
+            conexao.desconectar();
         }
 
     }
@@ -73,7 +82,9 @@ public class ClientesDAO {
             stmt.execute();
 
         } catch (SQLException e) {
-
+            JOptionPane.showMessageDialog(null, "erro ao excluir verifique a conexao");
+        } finally {
+            conexao.desconectar();
         }
 
     }
@@ -91,6 +102,8 @@ public class ClientesDAO {
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            conexao.desconectar();
         }
 
     }

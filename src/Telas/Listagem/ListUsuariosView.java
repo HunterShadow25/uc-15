@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas.Listagem;
 
 import Beans.Usuarios;
@@ -14,8 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
+ * tela de listagem de usuarios
  *
- * @author nickc
+ * @javadoc
  */
 public class ListUsuariosView extends javax.swing.JFrame {
 
@@ -294,7 +292,7 @@ public class ListUsuariosView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbnVoltarActionPerformed
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void txtPesquisaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPesquisaCaretUpdate

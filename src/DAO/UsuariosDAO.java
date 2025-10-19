@@ -1,5 +1,10 @@
 package DAO;
 
+/**
+ * classe responsavel por administrar o CRUD com os dados dos usuarios
+ *
+ * @javadoc
+ */
 import Beans.Usuarios;
 import Conexao.Conexao;
 import java.sql.Connection;
@@ -48,7 +53,9 @@ public class UsuariosDAO {
             stmt.execute();
 
         } catch (SQLException e) {
-
+            JOptionPane.showMessageDialog(null, "erro ao excluir verifique a conexao");
+        } finally {
+            conexao.desconectar();
         }
     }
 
@@ -64,6 +71,8 @@ public class UsuariosDAO {
             JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            conexao.desconectar();
         }
 
     }
@@ -88,6 +97,8 @@ public class UsuariosDAO {
             return lista;
         } catch (SQLException e) {
             return null;
+        } finally {
+            conexao.desconectar();
         }
     }
 
@@ -108,8 +119,8 @@ public class UsuariosDAO {
             return lista;
         } catch (Exception e) {
             return null;
+        } finally {
+            conexao.desconectar();
         }
     }
 }
-
-

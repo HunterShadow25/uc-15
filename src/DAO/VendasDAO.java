@@ -1,5 +1,10 @@
 package DAO;
 
+/**
+ * classe responsavel por administrar o CRUD com os dados das vendas
+ *
+ * @javadoc
+ */
 import Beans.Vendas;
 import Conexao.Conexao;
 import java.sql.Connection;
@@ -10,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
 public class VendasDAO {
 
     Conexao conexao;
@@ -36,9 +42,12 @@ public class VendasDAO {
             stmt.setDouble(5, venda.getTotal());
             stmt.setString(6, sdf.format(venda.getData()));
             stmt.execute();
+            
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "erro ao inserir os dados");
+        }finally{
+            conexao.desconectar();
         }
     }
 
@@ -54,6 +63,8 @@ public class VendasDAO {
 
         } catch (SQLException e) {
 
+        }finally{
+            conexao.desconectar();
         }
     }
 
@@ -76,13 +87,16 @@ public class VendasDAO {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "erro ao inserir os dados");
+        }finally{
+            conexao.desconectar();
         }
     }
-        public List<Vendas> getVendas(String pesquisa) {
+
+    public List<Vendas> getVendas(String pesquisa) {
         String sql = "Select * from Vendas where livro like ?";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setString(1, "%" +pesquisa+ "%" );
+            stmt.setString(1, "%" + pesquisa + "%");
 
             ResultSet rs = stmt.executeQuery();
             List<Vendas> lista = new ArrayList();
@@ -95,14 +109,16 @@ public class VendasDAO {
                 v.setPagamento(rs.getString("pagamento"));
                 v.setTotal(rs.getDouble("total"));
                 v.setData(rs.getDate("data"));
-               
+
                 lista.add(v);
 
             }
             return lista;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        
             return null;
+        }finally{
+            conexao.desconectar();
         }
 
     }

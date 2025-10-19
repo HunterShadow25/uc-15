@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas;
 
 import Beans.UsuariosDTO;
@@ -11,8 +8,9 @@ import Telas.Cadastro.CadUsuariosView;
 import Telas.Cadastro.CadVendasView;
 
 /**
+ * tela de menu
  *
- * @author nickc
+ * @javadoc
  */
 public class MenuView extends javax.swing.JFrame {
 
@@ -22,12 +20,12 @@ public class MenuView extends javax.swing.JFrame {
     public MenuView() {
         initComponents();
         lblNivel.setText(UsuariosDTO.getUsuarios());
-if(UsuariosDTO.getUsuarios().equalsIgnoreCase("Operador")){
-    jbnUsuarios.setVisible(false);
-    jbnUsuarios.setEnabled(false);
-}else{
-    
-}        
+        if (UsuariosDTO.getUsuarios().equalsIgnoreCase("Operador")) {
+            jbnUsuarios.setVisible(false);
+            jbnUsuarios.setEnabled(false);
+        }
+
+        
     }
 
     /**
@@ -208,15 +206,14 @@ if(UsuariosDTO.getUsuarios().equalsIgnoreCase("Operador")){
         CadUsuariosView cu = new CadUsuariosView();
         cu.setVisible(true);
         this.dispose();
-        
-        
-        
+
+
     }//GEN-LAST:event_jbnUsuariosActionPerformed
 
     private void jbnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnSairActionPerformed
-    LoginView lv = new LoginView();
-    lv.setVisible(true);
-    this.dispose();
+        LoginView lv = new LoginView();
+        lv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jbnSairActionPerformed
 
     /**

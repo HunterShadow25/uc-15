@@ -1,5 +1,9 @@
 package Conexao;
-
+/**
+*classe para administrar a conexao com banco de dados
+*
+*@javadoc
+*/
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;

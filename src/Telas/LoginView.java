@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas;
 
 import Beans.Usuarios;
@@ -11,8 +8,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
+ * tela de login
  *
- * @author nickc
+ * @javadoc
  */
 public class LoginView extends javax.swing.JFrame {
 
@@ -164,7 +162,7 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void jbnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnLoginActionPerformed
@@ -181,7 +179,7 @@ public class LoginView extends javax.swing.JFrame {
 
                 UsuariosDTO.setUsuarios(u.getNivel());
             }
-            JOptionPane.showMessageDialog(null,"bem vindo "+user.getNome()+" seu nivel de acesso é de " +UsuariosDTO.getUsuarios());
+            JOptionPane.showMessageDialog(null, "bem vindo " + user.getNome() + " seu nivel de acesso é de " + UsuariosDTO.getUsuarios());
             MenuView mv = new MenuView();
             mv.setVisible(true);
             this.dispose();

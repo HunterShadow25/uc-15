@@ -1,14 +1,22 @@
 package Beans;
 
+/**
+ * classe para administrar e guardar as informacoes das vendas
+ *
+ * @javadoc
+ */
 import java.util.Date;
 
 public class Vendas {
 
     Date data;
-    private String descricao, cliente;
-    private int quantidade, id;
+    private String descricao;
+    private String cliente;
+    private int quantidade;
+    private int id;
     private String pagamento;
-    private double total, unit;
+    private double total;
+    private double unit;
 
     public int getId() {
         return id;

@@ -1,10 +1,16 @@
 package Beans;
 
+/**
+ * classe para administrar e guardar as informacoes dos clientes
+ *
+ * @javadoc
+ */
 public class Clientes {
 
     private int id;
-
-    private String nome, email, cpf;
+    private String nome;
+    private String email;
+    private String cpf; 
 
     public int getId() {
         return id;

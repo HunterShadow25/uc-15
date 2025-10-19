@@ -1,15 +1,19 @@
 package Beans;
-
+/**
+*classe de controle de acesso entre as telas
+*
+*@javadoc
+*/
 public class UsuariosDTO {
 
-    public static String Usuarios = "nome";
+    public static String usuarios = "nome";
 
     public static String getUsuarios() {
-        return Usuarios;
+        return usuarios;
     }
 
-    public static void setUsuarios(String Usuarios) {
-        UsuariosDTO.Usuarios = Usuarios;
+    public static void setUsuarios(String usuarios) {
+        UsuariosDTO.usuarios = usuarios;
     }
 
 }
