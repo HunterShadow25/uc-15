@@ -1,5 +1,4 @@
 package Beans;
-
 /**
  * classe para administrar e guardar as informacoes dos clientes
  *
