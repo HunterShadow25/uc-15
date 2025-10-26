@@ -8,7 +8,6 @@ package Beans;
 public class Livros {
 
     private int id;
-
     private String nome;
     private String genero;
     private String autor;

@@ -96,6 +96,21 @@ public class LivrosDAO {
             JOptionPane.showMessageDialog(null, "erro ao excluir verifique a conexao");
         }
     }
+    //funçao de para teste de exclusão
+    public void excluirComNome(String nome) {
+
+        String sql = "delete from livros where nome = ?";
+
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+
+            stmt.setString(1, nome);
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Dados excluidos com sucesso");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "erro ao excluir verifique a conexao");
+        }
+    }
 
     public void editar(Livros livros) {
         String sql = "Update livros set nome = ?, genero  = ?, autor = ?,descricao = ?, preço = ? where id = ?";
